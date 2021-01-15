@@ -11,9 +11,15 @@ function App() {
   const savedNominees = localStorage.getItem('nominees');
   const [nomineesList, setNomineesList] = useState(JSON.parse(savedNominees) || []);
   const [nomineesID, setNomineesID] = useState([]);
+  const [nominationFull, setNominationFull] = useState(false);
 
   useEffect(() => {
     localStorage.setItem('nominees', JSON.stringify(nomineesList))
+    if (nomineesList.length >= 5) {
+      setNominationFull(true)
+    } else {
+      setNominationFull(false)
+    }
   }, [nomineesList])
 
   const addToNomineesList = movie => {
@@ -34,9 +40,10 @@ function App() {
 
   return (
     <div>
+      <div hidden={nomineesList.length < 5 ? true : false}>Banner</div>
       <div className='App'>
         <Nominees list={nomineesList} removeFromNomineesList={removeFromNomineesList} />
-        <Route exact path="/" render={props => <MovieList {...props} nomineesID={nomineesID} addToNomineesList={addToNomineesList} />} />
+        <Route exact path="/" render={props => <MovieList {...props} nomineesID={nomineesID} addToNomineesList={addToNomineesList} nominationFull={nominationFull} />} />
         <Route path='/:movie' component={Movie} />
       </div>
     </div>
