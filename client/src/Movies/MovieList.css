@@ -2,6 +2,11 @@
   width: 70%;
 }
 
+.default-message {
+  font-size: 25px;
+  margin: 25px;
+}
+
 .search {
   text-align: center;
 }

@@ -26,7 +26,7 @@ const Movie = (props) => {
   return (
     <div className="movie-wrapper">
       <div className="movie-card">
-        <img src={Poster} />
+        <img src={Poster} alt={Title} />
         <h2>{Title}</h2>
         <div className="movie-director">
         <p>Year: {Year}</p>
