@@ -47,7 +47,7 @@ function App() {
       </div>
       <div className='App'>
         <Nominees list={nomineesList} removeFromNomineesList={removeFromNomineesList} />
-        <Route exact path="/" render={props => <MovieList {...props} nomineesID={nomineesID} addToNomineesList={addToNomineesList} nominationFull={nominationFull} />} />
+        <Route exact path="/" render={props => <MovieList {...props} nomineesID={nomineesID} addToNomineesList={addToNomineesList} nominationFull={nominationFull} nomineesList={nomineesList} />} />
         <Route path='/:movie' component={Movie} />
       </div>
     </div>

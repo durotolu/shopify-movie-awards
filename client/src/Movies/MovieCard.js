@@ -3,14 +3,7 @@ import { Link } from 'react-router-dom';
 import './MovieCard.css';
 
 const MovieCard = movie => {
-  const { title, year, imdbID, addToNomineesList, nominationFull } = movie;
-  const savedNominees = localStorage.getItem('nominees');
-  const [nomineesList, setNomineesList] = useState(JSON.parse(savedNominees) || []);
-
-  useEffect(() => {
-    const nominees = JSON.parse(localStorage.getItem('nominees'))
-    setNomineesList(nominees)
-  }, [nomineesList])
+  const { title, year, imdbID, addToNomineesList, nominationFull, nomineesList } = movie;
 
   const nominateMovie = () => {
     addToNomineesList(movie)
