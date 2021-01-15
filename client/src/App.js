@@ -6,6 +6,7 @@ import { Route, Link } from 'react-router-dom';
 import MovieList from './Movies/MovieList';
 import Movie from './Movies/Movie';
 import Nominees from './Movies/Nominees';
+import cinema from "./image/cinema.jpg";
 
 function App() {
   const savedNominees = localStorage.getItem('nominees');
@@ -40,7 +41,10 @@ function App() {
 
   return (
     <div>
-      <div hidden={nomineesList.length < 5 ? true : false}>Banner</div>
+      <div className='banner' hidden={nomineesList.length < 5 ? true : false}>
+        <img className='banner-img' src={cinema} alt="cinema" />
+        <div class="centered">Thanks for your max (5) Nominations</div>
+      </div>
       <div className='App'>
         <Nominees list={nomineesList} removeFromNomineesList={removeFromNomineesList} />
         <Route exact path="/" render={props => <MovieList {...props} nomineesID={nomineesID} addToNomineesList={addToNomineesList} nominationFull={nominationFull} />} />
