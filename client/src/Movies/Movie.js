@@ -25,8 +25,7 @@ const Movie = (props) => {
     return <div>Loading movie information...</div>;
   }
 
-  console.log(movie)
-  const { imdbID, Title, Year, Poster, Genre, Actors, Director, Released, Rated, Writer, Plot } = movie;
+  const { Title, Year, Poster, Genre, Actors, Director, Released, Rated, Plot } = movie;
   return (
     <div className="movie-wrapper">
       <div className="movie-card">
