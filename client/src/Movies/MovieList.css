@@ -1,0 +1,29 @@
+.movie-list {
+  width: 70%;
+}
+
+.search {
+  text-align: center;
+}
+
+input {
+  height: 3em;
+  border: none;
+  width: 50%;
+  outline: 1px solid rgb(224, 220, 220);
+  border-top-left-radius: 5% 50%;
+  border-top-right-radius: 5% 50%;
+  border-bottom-left-radius: 5% 50%;
+  border-bottom-right-radius: 5% 50%;
+}
+
+input:focus {
+  outline: 1px solid #017afe;
+}
+
+/* input[list]::-webkit-calendar-picker-indicator {
+  display: none;
+}
+input::-webkit-list-button {
+  display: none;
+} */

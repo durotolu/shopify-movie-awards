@@ -9,18 +9,20 @@ const Nominees = ({ list, removeFromNomineesList }) => {
       <NavLink to="/"><div className="home-button">Home</div></NavLink>
       <div className="saved-list">
         <h3>Nominees:</h3>
-        {list.map(movie => {
-          return (
-            <div key={movie.imdbID}>
-              <NavLink to={`/${movie.imdbID}`}>
-                <div className="saved-movie">{movie.title}</div>
-                <div className="saved-movie"><em>{movie.year}</em></div>
-                {/* <div className="saved-movie">{movie.Released}</div> */}
-              </NavLink>
-              <button onClick={() => removeFromNomineesList(movie)}>Remove</button>
-            </div>
-          )
-        })}
+        <div>
+          {list.map(movie => {
+            return (
+              <div className='nominee-card' key={movie.imdbID}>
+                <NavLink to={`/${movie.imdbID}`}>
+                  <div className="saved-movie">{movie.title}</div>
+                  <div className="saved-movie"><em>{movie.year}</em></div>
+                  {/* <div className="saved-movie">{movie.Released}</div> */}
+                </NavLink>
+                <button onClick={() => removeFromNomineesList(movie)}>Remove</button>
+              </div>
+            )
+          })}
+        </div>
       </div>
     </div>
   )
