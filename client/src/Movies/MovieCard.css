@@ -1,0 +1,32 @@
+.movie-card {
+  width: 70%;
+  background-color: #fff;
+  border: 0;
+  box-shadow: 0 -1px 0 #e0e0e0, 0 0 2px rgba(0, 0, 0, 0.12),
+    0 2px 4px rgba(0, 0, 0, 0.24);
+  padding: 1rem;
+  cursor: pointer;
+  position: relative;
+  margin: 1rem auto;
+}
+
+Link {
+  text-decoration: none;
+}
+
+h2 {
+  margin-bottom: 2px;
+}
+
+button {
+  border: 1px solid grey;
+  padding: 5px 10px;
+  background-color: lightskyblue;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* button:hover {
+  background-color: lightskyblue;
+  color: white;
+} */
