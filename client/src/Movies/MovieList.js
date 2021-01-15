@@ -15,7 +15,7 @@ const MovieList = props => {
 
     const getMovies = () => {
       axios
-        .get(`http://www.omdbapi.com/?apikey=${REACT_APP_API_KEY}&s=${input}`)
+        .get(`http://www.omdbapi.com/?apikey=${REACT_APP_API_KEY}&s=${input}&type=movie`)
         .then(response => {
           input.length <= 2 ? setResponseString("") : setResponseString(response.data.Response)
           if (response.data.Response === "True") {
@@ -37,16 +37,16 @@ const MovieList = props => {
         <DebounceInput minLength={2} debounceTimeout={300} placeholder="Search movie" onChange={onChangeSearch} />
       </div>
       {movies.length ? movies.map(movie => (
-        <div key={movie.imdbID}><MovieDetails movie={movie} nomineesID={props.nomineesID} addToNomineesList={props.addToNomineesList} nominationFull={props.nominationFull}/></div>
+        <div key={movie.imdbID}><MovieDetails movie={movie} nomineesList={props.nomineesList} addToNomineesList={props.addToNomineesList} nominationFull={props.nominationFull}/></div>
       )) : responseString === "False" ? <div className='default-message'>No movies found for that search parameter...</div> : <div className='default-message'>Start typing movie name in the search bar above</div>}
     </div>
   );
 }
 
-function MovieDetails({ movie, nomineesID, addToNomineesList, nominationFull }) {
+function MovieDetails({ movie, nomineesList, addToNomineesList, nominationFull }) {
   const { Title, Year, imdbID, Poster } = movie;
   return (
-    <MovieCard title={Title} year={Year} imdbID={imdbID} poster={Poster} nomineesID={nomineesID} addToNomineesList={addToNomineesList} nominationFull={nominationFull} />
+    <MovieCard title={Title} year={Year} imdbID={imdbID} poster={Poster} nomineesList={nomineesList} addToNomineesList={addToNomineesList} nominationFull={nominationFull} />
   );
 }
 
