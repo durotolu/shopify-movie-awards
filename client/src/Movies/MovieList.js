@@ -4,6 +4,8 @@ import MovieCard from './MovieCard';
 import { DebounceInput } from 'react-debounce-input';
 import './MovieList.css';
 
+const REACT_APP_API_KEY = process.env.REACT_APP_API_KEY;
+
 const MovieList = props => {
   const [movies, setMovies] = useState([])
   const [responseString, setResponseString] = useState("")
@@ -13,7 +15,7 @@ const MovieList = props => {
 
     const getMovies = () => {
       axios
-        .get(`http://www.omdbapi.com/?apikey=af7fae7c&s=${input}`)
+        .get(`http://www.omdbapi.com/?apikey=${REACT_APP_API_KEY}&s=${input}`)
         .then(response => {
           input.length <= 2 ? setResponseString("") : setResponseString(response.data.Response)
           if (response.data.Response === "True") {
@@ -23,7 +25,7 @@ const MovieList = props => {
           }
         })
         .catch(error => {
-          console.error('Server Error', error);
+          alert('Server Error occured, Checkconnection and try again', error);
         });
     }
     getMovies();

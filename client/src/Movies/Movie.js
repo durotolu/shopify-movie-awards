@@ -2,18 +2,22 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './Movie.css';
 
+const REACT_APP_API_KEY = process.env.REACT_APP_API_KEY;
+console.log(REACT_APP_API_KEY)
+
 const Movie = (props) => {
   const [movie, setMovie] = useState(null);
   const id = props.match.params.movie;
 
+
   useEffect(() => {
     axios
-      .get(`http://www.omdbapi.com/?apikey=af7fae7c&i=${id}`)
+      .get(`http://www.omdbapi.com/?apikey=${REACT_APP_API_KEY}&i=${id}`)
       .then(response => {
         setMovie(response.data);
       })
       .catch(error => {
-        console.error(error);
+        alert(error);
       });
   }, [id]);
 
