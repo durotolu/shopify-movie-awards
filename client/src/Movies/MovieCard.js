@@ -1,16 +1,23 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import './MovieCard.css';
 
-const MovieCard = props => {
-  const {title, year, poster, type} = props;
+const MovieCard = movie => {
+  const { title, year, imdbID, nomineesID, addToNomineesList } = movie;
+
+  const nominateMovie = () => {
+    addToNomineesList(movie)
+  }
+
   return (
     <div className="movie-card">
-      <h2>{title}</h2>
-      <div className="movie-director">
-        Year: <em>{year}</em>
-      </div>
-      <div className="movie-metascore">
-        Type: <strong>{type}</strong>
-      </div>
+        <Link key={imdbID} to={`/${imdbID}`}>
+          <h2>{title}</h2>
+          <p className="movie-director">
+            Year: <em>{year}</em>
+          </p>
+        </Link>
+        <button disabled={nomineesID.includes(imdbID) ? true : false} className="nom-button" onClick={nominateMovie}>Nominate</button>
     </div>
   )
 };

@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import MovieCard from './MovieCard';
+import {DebounceInput} from 'react-debounce-input';
 
 const MovieList = props => {
   const [movies, setMovies] = useState([])
@@ -29,19 +30,20 @@ const MovieList = props => {
     
   return (
     <div className="movie-list">
-      {/* <DebounceInput minLength={1} debounceTimeout={300} list="locations" placeholder="Your Address" onChange={onChangeSearch} onClick={null} /> */}
-      <input onChange={onChangeSearch} />
+      <DebounceInput minLength={3} debounceTimeout={300} placeholder="Search movie" onChange={onChangeSearch} onClick={null} />
+      {/* <input onChange={onChangeSearch} /> */}
        {movies.map(movie => (
-          <Link key={movie.imdbID} to={`/${movie.imdbID}`}><MovieDetails movie={movie} /></Link>
+          <div key={movie.imdbID}><MovieDetails movie={movie} nomineesID={props.nomineesID} addToNomineesList={props.addToNomineesList} /></div>
         ))}
     </div>
   );
 }
 
-function MovieDetails({ movie }) {
-  const { Title, Year, Poster, Type } = movie;
+function MovieDetails({ movie, nomineesID, addToNomineesList }) {
+  // debugger
+  const { Title, Year, imdbID, Poster } = movie;
   return (
-    <MovieCard title={Title} year={Year} poster={Poster} type={Type} />
+    <MovieCard title={Title} year={Year} imdbID={imdbID} poster={Poster} nomineesID={nomineesID} addToNomineesList={addToNomineesList} />
   );
 }
 
