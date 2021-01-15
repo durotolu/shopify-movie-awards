@@ -1,8 +1,7 @@
-import logo from './logo.svg';
 import './App.css';
 
 import React, { useEffect, useState } from 'react';
-import { Route, Link } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import MovieList from './Movies/MovieList';
 import Movie from './Movies/Movie';
 import Nominees from './Movies/Nominees';
