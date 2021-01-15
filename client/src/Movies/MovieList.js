@@ -31,20 +31,20 @@ const MovieList = props => {
 
   return (
     <div className="movie-list">
-      <div className="search">{responseString}
+      <div className="search">
         <DebounceInput minLength={2} debounceTimeout={300} placeholder="Search movie" onChange={onChangeSearch} />
       </div>
       {movies.length ? movies.map(movie => (
-        <div key={movie.imdbID}><MovieDetails movie={movie} nomineesID={props.nomineesID} addToNomineesList={props.addToNomineesList} /></div>
-      )) : responseString === "False" ? <div>No movies found for that search parameter...</div> : <div>Start typing in the search bar above</div>}
+        <div key={movie.imdbID}><MovieDetails movie={movie} nomineesID={props.nomineesID} addToNomineesList={props.addToNomineesList} nominationFull={props.nominationFull}/></div>
+      )) : responseString === "False" ? <div className='default-message'>No movies found for that search parameter...</div> : <div className='default-message'>Start typing movie name in the search bar above</div>}
     </div>
   );
 }
 
-function MovieDetails({ movie, nomineesID, addToNomineesList }) {
+function MovieDetails({ movie, nomineesID, addToNomineesList, nominationFull }) {
   const { Title, Year, imdbID, Poster } = movie;
   return (
-    <MovieCard title={Title} year={Year} imdbID={imdbID} poster={Poster} nomineesID={nomineesID} addToNomineesList={addToNomineesList} />
+    <MovieCard title={Title} year={Year} imdbID={imdbID} poster={Poster} nomineesID={nomineesID} addToNomineesList={addToNomineesList} nominationFull={nominationFull} />
   );
 }
 
