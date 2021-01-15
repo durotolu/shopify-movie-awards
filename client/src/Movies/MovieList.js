@@ -15,7 +15,7 @@ const MovieList = props => {
 
     const getMovies = () => {
       axios
-        .get(`http://www.omdbapi.com/?apikey=${REACT_APP_API_KEY}&s=${input}&type=movie`)
+        .get(`https://www.omdbapi.com/?apikey=${REACT_APP_API_KEY}&s=${input}&type=movie`)
         .then(response => {
           input.length <= 2 ? setResponseString("") : setResponseString(response.data.Response)
           if (response.data.Response === "True") {

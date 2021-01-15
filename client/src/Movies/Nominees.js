@@ -27,22 +27,22 @@ const Nominees = ({ list, removeFromNomineesList }) => {
                   {/* <div className="saved-movie">{movie.Released}</div> */}
                   <div>
                     <FacebookShareButton
-                      url={`http://shopify-movie-awards.durotolu.vercel.app//${movie.imdbID}`}
+                      url={`https://shopify-movie-awards-git-main.durotolu.vercel.app/${movie.imdbID}`}
                       hashtag={`#${movie.title}`}
                       quote="Get in!"
                     >
                       <FacebookIcon size={30} round={true} />
                     </FacebookShareButton>
                     <LinkedinShareButton
-                      url={`http://shopify-movie-awards.durotolu.vercel.app/${movie.imdbID}`}
+                      url={`https://shopify-movie-awards-git-main.durotolu.vercel.app/${movie.imdbID}`}
                       title={`Awesome Movie! #${movie.title}`}
                       summary="Go check it out"
-                      source="https://app.trackdrills.com"
+                      source="https://shopify-movie-awards-git-main.durotolu.vercel.app/"
                     >
                       <LinkedinIcon size={30} round={true} />
                     </LinkedinShareButton>
                     <TwitterShareButton
-                      url={`http://shopify-movie-awards.durotolu.vercel.app/${movie.imdbID}`}
+                      url={`https://shopify-movie-awards-git-main.durotolu.vercel.app/${movie.imdbID}`}
                       hashtags={["omdbapi", `${movie.title}`]}
                       title="Awesome Movie!"
                     >

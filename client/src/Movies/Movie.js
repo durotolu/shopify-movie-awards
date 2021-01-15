@@ -12,7 +12,7 @@ const Movie = (props) => {
 
   useEffect(() => {
     axios
-      .get(`http://www.omdbapi.com/?apikey=${REACT_APP_API_KEY}&i=${id}`)
+      .get(`https://www.omdbapi.com/?apikey=${REACT_APP_API_KEY}&i=${id}`)
       .then(response => {
         setMovie(response.data);
       })
