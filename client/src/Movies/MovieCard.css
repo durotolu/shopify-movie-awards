@@ -1,5 +1,5 @@
 .movie-card {
-  width: 70%;
+  width: 80%;
   background-color: #fff;
   border: 0;
   box-shadow: 0 -1px 0 #e0e0e0, 0 0 2px rgba(0, 0, 0, 0.12),
@@ -15,7 +15,8 @@ Link {
 }
 
 h2 {
-  margin-bottom: 2px;
+  margin-top: 0;
+  margin-bottom: 5px;
 }
 
 button {
@@ -25,8 +26,3 @@ button {
   cursor: pointer;
   font-weight: bold;
 }
-
-/* button:hover {
-  background-color: lightskyblue;
-  color: white;
-} */

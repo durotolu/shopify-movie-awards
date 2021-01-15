@@ -12,10 +12,7 @@ const MovieCard = movie => {
   return (
     <div className="movie-card">
         <Link key={imdbID} to={`/${imdbID}`}>
-          <h2>{title}</h2>
-          <p className="movie-director">
-            Year: <em>{year}</em>
-          </p>
+          <h2>{title} (<em>{year}</em>)</h2>
         </Link>
         <button disabled={nomineesID.includes(imdbID) ? true : false} className="nom-button" onClick={nominateMovie}>Nominate</button>
     </div>
