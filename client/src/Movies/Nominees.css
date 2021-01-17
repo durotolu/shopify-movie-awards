@@ -1,7 +1,7 @@
 .saved-list {
-  background-color: #fff;
+  background-color: rgb(151, 147, 147);
   border: 0;
-  box-shadow: 0 -1px 0 #e0e0e0, 0 0 2px rgba(0, 0, 0, 0.12),
+  box-shadow: 0 -1px 0 #e0e0e0, 0 0 20px rgba(0, 0, 0, 0.12),
     0 2px 4px rgba(0, 0, 0, 0.24);
   padding: 1rem;
   position: relative;
@@ -20,9 +20,23 @@
 }
 
 .saved-list {
-  margin-right: 10px;
+  /* margin-right: 10px; */
   display: flex;
   flex-direction: column;
+}
+
+.navlink {
+  text-decoration: none;
+}
+
+.saved-movie {
+  text-decoration: none;
+  font-size: .8em;
+  color: rgb(17, 84, 228);
+}
+
+.saved-movie:hover {
+  color:rgb(68, 175, 241);
 }
 
 .nominee-card {

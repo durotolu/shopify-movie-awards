@@ -21,9 +21,8 @@ const Nominees = ({ list, removeFromNomineesList }) => {
           {list.map(movie => {
             return (
               <div className='nominee-card' key={movie.imdbID}>
-                <NavLink to={`/${movie.imdbID}`}>
-                  <div className="saved-movie">{movie.title}</div>
-                  <div className="saved-movie"><em>{movie.year}</em></div>
+                <NavLink className="navlink" to={`/${movie.imdbID}`}>
+                  <h3 className="saved-movie">{movie.title}<span className="saved-movie"><em> ({movie.year})</em></span></h3>
                   {/* <div className="saved-movie">{movie.Released}</div> */}
                   <div>
                     <FacebookShareButton

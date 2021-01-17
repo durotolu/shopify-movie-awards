@@ -6,15 +6,19 @@ const MovieCard = movie => {
   const { title, year, imdbID, addToNomineesList, nominationFull, nomineesList } = movie;
 
   const nominateMovie = () => {
-    addToNomineesList(movie)
+    addToNomineesList({
+      imdbID,
+      title,
+      year
+    })
   }
 
   return (
     <div className="movie-card">
-        <Link key={imdbID} to={`/${imdbID}`}>
-          <h2>{title} (<em>{year}</em>)</h2>
-        </Link>
-        <button disabled={nominationFull ? true : nomineesList.find((nominee) => nominee.imdbID === imdbID) ? true : false} className="nom-button" onClick={nominateMovie}>Nominate</button>
+      <Link className="movie-card-link" key={imdbID} to={`/${imdbID}`}>
+        <h2>{title} (<em>{year}</em>)</h2>
+      </Link>
+      <button disabled={nominationFull ? true : nomineesList.find((nominee) => nominee.imdbID === imdbID) ? true : false} className="nom-button" onClick={nominateMovie}>Nominate</button>
     </div>
   )
 };
