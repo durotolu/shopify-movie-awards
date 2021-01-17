@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import MovieCard from './MovieCard';
 import { DebounceInput } from 'react-debounce-input';
@@ -10,29 +10,30 @@ const MovieList = props => {
   const [movies, setMovies] = useState([])
   const [responseString, setResponseString] = useState("")
   const [loading, setLoading] = useState(false)
+  const [inputField, setInputField] = useState("")
 
   const onChangeSearch = e => {
     const input = e.target.value;
-
-    const getMovies = () => {
-      setLoading(true)
-      axios
-        .get(`https://www.omdbapi.com/?apikey=${REACT_APP_API_KEY}&s=${input}&type=movie`)
-        .then(response => {
-          input.length <= 2 ? setResponseString("") : setResponseString(response.data.Response)
-          if (response.data.Response === "True") {
-            setMovies(response.data.Search);
-          } else {
-            setMovies([]);
-          }
-          setLoading(false)
-        })
-        .catch(error => {
-          alert('Server Error occured, Checkconnection and try again', error);
-        });
-    }
-    getMovies();
+    setInputField(input)
   }
+
+  useEffect(() => {
+    setLoading(true)
+    axios
+      .get(`https://www.omdbapi.com/?apikey=${REACT_APP_API_KEY}&s=${inputField}&type=movie`)
+      .then(response => {
+        inputField.length <= 2 ? setResponseString("") : setResponseString(response.data.Response)
+        if (response.data.Response === "True") {
+          setMovies(response.data.Search);
+        } else {
+          setMovies([]);
+        }
+        setLoading(false)
+      })
+      .catch(error => {
+        props.notify(error.message)
+      });
+  }, [inputField, props])
 
   return (
     <div className="movie-list">
