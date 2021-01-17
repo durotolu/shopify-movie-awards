@@ -9,11 +9,13 @@ const REACT_APP_API_KEY = process.env.REACT_APP_API_KEY;
 const MovieList = props => {
   const [movies, setMovies] = useState([])
   const [responseString, setResponseString] = useState("")
+  const [loading, setLoading] = useState(false)
 
   const onChangeSearch = e => {
     const input = e.target.value;
 
     const getMovies = () => {
+      setLoading(true)
       axios
         .get(`https://www.omdbapi.com/?apikey=${REACT_APP_API_KEY}&s=${input}&type=movie`)
         .then(response => {
@@ -23,6 +25,7 @@ const MovieList = props => {
           } else {
             setMovies([]);
           }
+          setLoading(false)
         })
         .catch(error => {
           alert('Server Error occured, Checkconnection and try again', error);
@@ -36,9 +39,11 @@ const MovieList = props => {
       <div className="search">
         <DebounceInput minLength={2} debounceTimeout={300} placeholder="Search movie" onChange={onChangeSearch} />
       </div>
-      {movies.length ? movies.map(movie => (
-        <div key={movie.imdbID}><MovieDetails movie={movie} nomineesList={props.nomineesList} addToNomineesList={props.addToNomineesList} nominationFull={props.nominationFull}/></div>
-      )) : responseString === "False" ? <div className='default-message'>No movies found for that search parameter...</div> : <div className='default-message'>Start typing movie name in the search bar above</div>}
+      {loading ? <div className="spinner"></div> : <div className="movie-results">
+        {movies.length ? movies.map(movie => (
+          <div key={movie.imdbID}><MovieDetails movie={movie} nomineesList={props.nomineesList} addToNomineesList={props.addToNomineesList} nominationFull={props.nominationFull} /></div>
+        )) : responseString === "False" ? <div className='default-message'>No movies found for that search parameter...</div> : <div className='default-message'>Start typing movie name in the search bar above</div>}
+      </div>}
     </div>
   );
 }
