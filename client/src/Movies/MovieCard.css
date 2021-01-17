@@ -1,5 +1,5 @@
 .movie-card {
-  width: 80%;
+  width: 15em;
   background-color: #fff;
   border: 0;
   box-shadow: 0 -1px 0 #e0e0e0, 0 0 2px rgba(0, 0, 0, 0.12),
@@ -10,8 +10,13 @@
   margin: 1rem auto;
 }
 
-Link {
+.movie-card-link {
   text-decoration: none;
+  color: rgb(17, 84, 228);
+}
+
+.movie-card-link:hover {
+  color:rgb(68, 175, 241);
 }
 
 h2 {
