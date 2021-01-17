@@ -4,6 +4,12 @@
 
 img {
   height: 350px;
+  width: 100%;
+}
+
+.button-cover {
+  display: flex;
+  justify-content: space-between;
 }
 
 p {
@@ -28,3 +34,10 @@ p {
   }
 }
 
+.nom-movie-button {
+  border: 1px solid grey;
+  padding: 5px 10px;
+  background-color: lightskyblue;
+  cursor: pointer;
+  font-weight: bold;
+}
