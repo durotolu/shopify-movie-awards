@@ -53,7 +53,7 @@ function App() {
       />
       <div className='banner' hidden={nomineesList.length < 5 ? true : false}>
         <img className='banner-img' src={cinema} alt="cinema" />
-        <div class="centered">Thanks for your max (5) Nominations</div>
+        <div class="centered">Nomination Complete</div>
       </div>
       <div className='App'>
         <Nominees list={nomineesList} removeFromNomineesList={removeFromNomineesList} />
